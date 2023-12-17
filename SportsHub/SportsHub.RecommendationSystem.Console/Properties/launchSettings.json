@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SportsHub.RecommendationSystem.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "recommend -u 621 -s 4 -l"
+    }
+  }
+}

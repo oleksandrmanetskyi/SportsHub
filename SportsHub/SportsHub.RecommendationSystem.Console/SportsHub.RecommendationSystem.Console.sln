@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsHub.RecommendationSystem.Console", "SportsHub.RecommendationSystem.Console.csproj", "{E68DC374-5658-41A3-AE68-12F6EE2AC180}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B9D19C11-FEAC-48C8-B862-584B7EDE7072} = {B9D19C11-FEAC-48C8-B862-584B7EDE7072}
+		{A7CD12B0-ECD3-441A-ABBA-83DB5452FFB8} = {A7CD12B0-ECD3-441A-ABBA-83DB5452FFB8}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsHub.RecommendationSystem.DatabaseSeeding", "..\SportsHub.RecommendationSystem.DatabaseSeeding\SportsHub.RecommendationSystem.DatabaseSeeding.csproj", "{B9D19C11-FEAC-48C8-B862-584B7EDE7072}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsHub.RecommendationSystem.WebApi", "..\SportsHub.RecommendationSystem.WebApi\SportsHub.RecommendationSystem.WebApi.csproj", "{939A9448-ACE9-4E32-9B42-1A375588C53F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsHub.RecommendationSystem.Services", "..\SportsHub.RecommendationSystem.Services\SportsHub.RecommendationSystem.Services.csproj", "{A7CD12B0-ECD3-441A-ABBA-83DB5452FFB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E68DC374-5658-41A3-AE68-12F6EE2AC180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E68DC374-5658-41A3-AE68-12F6EE2AC180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E68DC374-5658-41A3-AE68-12F6EE2AC180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E68DC374-5658-41A3-AE68-12F6EE2AC180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D19C11-FEAC-48C8-B862-584B7EDE7072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D19C11-FEAC-48C8-B862-584B7EDE7072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D19C11-FEAC-48C8-B862-584B7EDE7072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D19C11-FEAC-48C8-B862-584B7EDE7072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939A9448-ACE9-4E32-9B42-1A375588C53F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939A9448-ACE9-4E32-9B42-1A375588C53F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939A9448-ACE9-4E32-9B42-1A375588C53F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939A9448-ACE9-4E32-9B42-1A375588C53F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7CD12B0-ECD3-441A-ABBA-83DB5452FFB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7CD12B0-ECD3-441A-ABBA-83DB5452FFB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7CD12B0-ECD3-441A-ABBA-83DB5452FFB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7CD12B0-ECD3-441A-ABBA-83DB5452FFB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9E9A600-9288-44BB-944D-BCB934AEEBBD}
+	EndGlobalSection
+EndGlobal

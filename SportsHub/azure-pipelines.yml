@@ -1,0 +1,125 @@
+trigger:
+- main
+- dev
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  AzureSubscription: 'AzureServiceConnection2' # Name of the Service Connection
+  ApiName: 'sportshub'
+  ClusterResourceGroup: SportsHubResources  
+  ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'  
+  ChartPath: 'SportsHub/charts/$(ApiName)'
+  HelmVersion: 3.5.0
+  ImageName: 'sportshubcontainerregistry2.azurecr.io/sportshub:$(GitVersion.NuGetVersionV2)'
+  K8sNamespace: '$(ApiName)-production'
+  KubernetesCluster: 'SportsHubCluster2'
+stages:
+  - stage: CI
+    pool:
+      vmImage: ubuntu-latest
+    jobs:
+      - job: PrintDetails
+        displayName: "\U0001F4C3 PrintDetails"
+        steps:
+          - checkout: none
+          - bash: |
+              echo "ID:.....................$(Build.BuildId)"
+              echo "Number:.................$(Build.BuildNumber)"
+              echo "Reason:.................$(Build.Reason)"
+              echo "Source Branch:..........$(Build.SourceBranch)"
+              echo "Source Branch Name:.....$(Build.SourceBranchName)"
+              echo "Definition Name:........$(Build.DefinitionName)"
+            displayName: print job details
+      - job: 'Compile'
+        displayName: '⚙️ Compile'
+        dependsOn: [ ]
+        steps:      
+          - task: NuGetToolInstaller@1
+            displayName: 'Install nuget'
+          - task: NuGetCommand@2
+            displayName: 'Restore nuget packages'
+            inputs:
+              restoreSolution: '$(solution)'
+          - task: DotNetCoreCLI@2
+            displayName: Build
+            inputs:
+              command: build
+              projects: '**/*.csproj'
+              arguments: '--configuration $(buildConfiguration)'
+      - job: PackageAndPublish
+        displayName: '⚙️ Package and publish'
+        dependsOn: [ Compile ]
+        steps:
+          - task: gitversion/setup@0
+            displayName: Install GitVersion
+            inputs:
+              versionSpec: '5.5.0'
+          - task: gitversion/execute@0
+            displayName: Determine Version
+          - task: Docker@2
+            displayName: 'Build image'
+            inputs:
+              command: 'build'
+              containerRegistry: 'SportsHubContainerRegistry2'
+              Dockerfile: 'Dockerfile'
+              repository: 'SportsHub'
+              buildContext: '$(Build.Repository.LocalPath)'
+              arguments: '--build-arg ASPNETCORE_ENVIRONMENT=Production'
+              tags: |
+                $(GitVersion.NuGetVersionV2)
+                latest
+              addPipelineData: false
+          - task: Docker@2
+            displayName: 'Push image to container registry'
+            inputs:
+              command: 'push'
+              containerRegistry: 'SportsHubContainerRegistry2'
+              repository: 'SportsHub'
+              tags: |
+                $(GitVersion.NuGetVersionV2)
+                latest
+              addPipelineData: false
+  - stage: Deploy
+    dependsOn: CI 
+    pool:
+      vmImage: ubuntu-latest
+    jobs:
+      - job: Deploy
+        displayName: "⚙️ Deploy to kubernetes"
+        steps:
+          - task: HelmInstaller@0
+            displayName: 'Install Helm $(HelmVersion)'
+            inputs:
+              helmVersion: $(HelmVersion)
+              checkLatestHelmVersion: false
+              installKubectl: true
+            condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))   
+            
+          - task: HelmDeploy@0
+            displayName: 'helm package'
+            inputs:
+              azureSubscriptionEndpoint: $(AzureSubscription)
+              azureResourceGroup: $(ClusterResourceGroup)
+              kubernetesCluster: $(KubernetesCluster)
+              command: 'package'
+              chartPath: $(ChartPath)
+              chartVersion: $(Build.BuildNumber)
+              save: false
+              namespace: '$(K8sNamespace)'
+            condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))   
+          
+          - task: HelmDeploy@0
+            displayName: 'Helm upgrade release'
+            inputs:
+              connectionType: 'Azure Resource Manager'
+              azureSubscription: $(AzureSubscription)
+              azureResourceGroup: '$(ClusterResourceGroup)'
+              kubernetesCluster: '$(KubernetesCluster)'
+              useClusterAdmin: true
+              namespace: '$(K8sNamespace)'
+              command: 'upgrade'
+              chartType: 'FilePath'
+              chartPath: '$(ChartPackage)'
+              releaseName: '$(ApiName)-$(K8sNamespace)'
+              arguments: '--create-namespace'
