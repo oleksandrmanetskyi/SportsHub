@@ -34,6 +34,9 @@ Can see only the home, login and sign up pages.
 # Architecture
 ![SportsHub_RecommendationSysteM_Architecture_2023v drawio](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/9c86da45-6dd4-407f-adb8-ea28032bbcd1)
 App is based on 3tier architecture. It consists of 3 layers: Presentation, Business and Data Access.
+- Presentation tier is developed using React framework.
+- Business tier is developed using ASP.NET Core framework. It uses Entity Framework Core to work with database tier.
+- Data Access tier is running on Microsoft SQL Server.
 It also has additional module - **Recommendation System**. This separate module is responsible for providing recommendations for users. It is based on Machine Learning algorithms. It is independent from other layers and can be easily replaced with another module.
 Also application uses Azure cloud service to store data and Google API to provide maps.
 
