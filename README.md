@@ -43,6 +43,7 @@ Can see only the home, login and sign up pages.
 ![Знімок екрана 2023-12-18 222752](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/75d23ab1-21fb-4d49-8827-b744c1e3e196)
 
 **1. An adversary may block access to the application or API hosted on JustEatIt REST API through a denial of service attack**
+
 | State                  | Needs more investigation    |
 |------------------------|-----------------------------|
 | Priority               | High                        |
@@ -51,6 +52,7 @@ Can see only the home, login and sign up pages.
 | Possible Mitigation(s) | Network level denial of service mitigations are automatically enabled as part of the Azure platform (Basic Azure DDoS Protection). Implement application level throttling (e.g. per-user, per-session, per-API) to maintain service availability and protect against DoS attacks. Leverage Azure API Management for managing and protecting APIs. |
 
 **2. An adversary may gain long term persistent access to related resources through the compromise of an application identity**
+
 | State                  | Needs more investigation    |
 |------------------------|-----------------------------|
 | Priority               | High                        |
@@ -59,6 +61,7 @@ Can see only the home, login and sign up pages.
 | Possible Mitigation(s) | Store secrets in secret storage solutions where possible, and rotate secrets on a regular cadence. Use Managed Service Identity to create a managed app identity on Azure Active Directory and use it to access AAD-protected resources. |
 
 **3. An adversary may perform action(s) on behalf of another user due to lack of controls against cross domain requests**
+
 | State                  | Needs more investigation    |
 |------------------------|-----------------------------|
 | Priority               | High                        |
@@ -70,6 +73,7 @@ Can see only the home, login and sign up pages.
 ![Знімок екрана 2023-12-18 223653](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/edd1e3be-1e40-44c9-aff5-7ec1715c17e8)
 
 **4. An adversary may perform action(s) on behalf of another user due to lack of controls against cross domain requests**
+
 | State                  | Needs more investigation    |
 |------------------------|-----------------------------|
 | Priority               | High                        |
@@ -81,12 +85,14 @@ Can see only the home, login and sign up pages.
 ![Знімок екрана 2023-12-18 225159](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/044dd4ce-8b8d-4fde-b55e-297813d55b70)
 
 **5. An adversary may spoof an Azure administrator and gain access to Azure subscription portal**
+
 | State                  | Needs more investigation    |
 |------------------------|-----------------------------|
 | Priority               | High                        |
 | Category               | Spoofing                    |
 | Description            | An adversary may spoof an Azure administrator and gain access to the Azure subscription portal if the administrator's credentials are compromised. |
 | Possible Mitigation(s) | Enable fine-grained access management to Azure Subscription using RBAC. Enable Azure Multi-Factor Authentication for Azure Administrators. |
+
 **6. Attacker can steal user session cookies due to insecure cookie attributes**
 
 | State                  | Needs more investigation    |
