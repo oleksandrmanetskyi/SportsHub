@@ -38,7 +38,8 @@ App is based on 3tier architecture. It consists of 3 layers: Presentation, Busin
 - Business tier is developed using ASP.NET Core framework. It uses Entity Framework Core to work with database tier.
 - Data Access tier is running on Microsoft SQL Server.
 
-It also has additional module - **Recommendation System**. This separate module is responsible for providing recommendations for users. It is based on Machine Learning algorithms. It is independent from other layers and can be easily replaced with another module. Recommendation Service is developed using .NET Core framework.
+It also has additional module - **Recommendation System**. This separate module is responsible for providing recommendations for users. It is based on Machine Learning algorithms. It is independent from other layers and can be easily replaced with another module. Recommendation Service is developed using .NET Core framework. It uses Model-Based Recommendation System to provide recommendations.\
+*More information here [Building a Recommendation Engine in C#](https://www.codeproject.com/Articles/1232150/Building-a-Recommendation-Engine-in-Csharp).*
 
 Also application uses Azure Blob Storage to store data and Google API to provide maps.
 
