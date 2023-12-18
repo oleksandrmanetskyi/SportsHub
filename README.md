@@ -66,5 +66,26 @@ public async Task<IActionResult> GetAll()
 ```
 
 
+# Data model
+![Sportshub_data_model](https://github.com/oleksandrmanetskyi/SportsHub/assets/56358923/a2f07554-2374-4d99-b4b7-eba8bacc1df0)
 
+## Logical entities` models
+- Users.
+- Sport kinds.
+- Training programs.
+- Nutritions.
+- Shops.
+- News.
+- Recommendations.
 
+# Analytics model
+**Potential functional metrics that can be collected from the application**
+- Articles` views.
+- Nutritions` rate.
+- Training program rate/views.
+- Shops` rate.
+- Sport category popularity.
+- Recommendations` rate
+- User`s information that would not reveal their identity(age, sex, weight).
+- Number of registered users.
+- Training program`s active users.
