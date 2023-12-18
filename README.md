@@ -39,6 +39,7 @@ App is based on 3tier architecture. It consists of 3 layers: Presentation, Busin
 - Data Access tier is running on Microsoft SQL Server.
 
 It also has additional module - **Recommendation System**. This separate module is responsible for providing recommendations for users. It is based on Machine Learning algorithms. It is independent from other layers and can be easily replaced with another module. Recommendation Service is developed using .NET Core framework.
+
 Also application uses Azure Blob Storage to store data and Google API to provide maps.
 
 # Concurency patterns usage
