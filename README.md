@@ -157,6 +157,19 @@ public async Task<IActionResult> GetAll()
 - Number of registered users.
 - Training program`s active users.
 
+
+# Deployment model
+<img width="704" alt="Screenshot 2023-12-19 at 00 18 06" src="https://github.com/oleksandrmanetskyi/SportsHub/assets/56626861/fe1a6d9b-102a-42bd-870f-3f582efa9cb9">
+
+- React WebApp - Azure App Service
+- API - Azure App Service / Azure Functions
+- MSSQL Server - Azure SQL Database
+- Service for Recommendations - Azure Container Instances
+
+Additinal services:
+- Azure Blob Storage
+- Google Maps API
+
 # Monitoring
 - HTTP Response Codes:
 Measurement Unit: Count (Number), Acceptable Range: 0, Monitoring Tool: AWS Elastic Beanstalk, Criticality Level: High
