@@ -44,18 +44,21 @@ Can see only the home, login and sign up pages.
 
 **1. An adversary may block access to the application or API hosted on JustEatIt REST API through a denial of service attack**
 | State                  | Needs more investigation    |
+|------------------------|-----------------------------|
 | Priority               | High                        |
 | Category               | Denial of Service           |
 | Description            | An adversary may block access to the application or API hosted on SportsHub API through a denial of service attack |
 | Possible Mitigation(s) | Network level denial of service mitigations are automatically enabled as part of the Azure platform (Basic Azure DDoS Protection). Implement application level throttling (e.g. per-user, per-session, per-API) to maintain service availability and protect against DoS attacks. Leverage Azure API Management for managing and protecting APIs. |
 **2. An adversary may gain long term persistent access to related resources through the compromise of an application identity**
 | State                  | Needs more investigation    |
+|------------------------|-----------------------------|
 | Priority               | High                        |
 | Category               | Elevation of Privileges     |
 | Description            | An adversary may gain long term persistent access to related resources through the compromise of an application identity |
 | Possible Mitigation(s) | Store secrets in secret storage solutions where possible, and rotate secrets on a regular cadence. Use Managed Service Identity to create a managed app identity on Azure Active Directory and use it to access AAD-protected resources. |
 **3. An adversary may perform action(s) on behalf of another user due to lack of controls against cross domain requests**
 | State                  | Needs more investigation    |
+|------------------------|-----------------------------|
 | Priority               | High                        |
 | Category               | Elevation of Privileges     |
 | Description            | An adversary may perform action(s) on behalf of another user due to lack of controls against cross-domain requests |
@@ -64,6 +67,7 @@ Can see only the home, login and sign up pages.
 ![Знімок екрана 2023-12-18 223653](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/edd1e3be-1e40-44c9-aff5-7ec1715c17e8)
 **4. An adversary may perform action(s) on behalf of another user due to lack of controls against cross domain requests**
 | State                  | Needs more investigation    |
+|------------------------|-----------------------------|
 | Priority               | High                        |
 | Category               | Elevation of Privileges     |
 | Description            | An adversary can gain long-term, persistent access to a Azure SQL instance through the compromise of local user account password(s). |
@@ -73,15 +77,17 @@ Can see only the home, login and sign up pages.
 ![Знімок екрана 2023-12-18 225159](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/044dd4ce-8b8d-4fde-b55e-297813d55b70)
 
 **5. An adversary may spoof an Azure administrator and gain access to Azure subscription portal**
-| State                  | Needs more investigation  |
-| Priority               | High                      |
-| Category               | Spoofing                  |
+| State                  | Needs more investigation    |
+|------------------------|-----------------------------|
+| Priority               | High                        |
+| Category               | Spoofing                    |
 | Description            | An adversary may spoof an Azure administrator and gain access to the Azure subscription portal if the administrator's credentials are compromised. |
 | Possible Mitigation(s) | Enable fine-grained access management to Azure Subscription using RBAC. Enable Azure Multi-Factor Authentication for Azure Administrators. |
 **6. Attacker can steal user session cookies due to insecure cookie attributes**
-| State                  | Needs more investigation  |
-| Priority               | High                      |
-| Category               | Information Disclosure    |
+| State                  | Needs more investigation    |
+|------------------------|-----------------------------|
+| Priority               | High                        |
+| Category               | Information Disclosure      |
 | Description            | Attacker can steal user session cookies due to insecure cookie attributes. |
 | Possible Mitigation(s) | Applications available over HTTPS must use secure cookies. All HTTP-based applications should specify HTTP only for cookie definition. |
 
