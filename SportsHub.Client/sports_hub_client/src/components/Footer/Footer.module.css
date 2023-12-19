@@ -1,0 +1,16 @@
+.footerContainer{
+    text-align: center;
+    padding: 10px 0px 10px;
+    display: flex;
+    background: white;
+}
+.footerTitle{
+    display: inline;
+    text-align: left;
+    padding: 0 100px 0;
+    font-size: 25px;
+    min-width: 49%;
+}
+.footerCopyright{
+    margin: 10px -125px 0;
+}

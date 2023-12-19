@@ -1,0 +1,14 @@
+.imageUpload {
+    display: flex;
+    flex-direction: column;
+}
+
+.uploadComponent {
+    display: flex;
+    justify-content: center;
+}
+
+.instruction {
+    display: flex;
+    justify-content: center;
+}

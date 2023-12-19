@@ -1,0 +1,118 @@
+.mainContainerSignUp{
+    align-self: center;
+    margin: 40px 0;
+    background-color: white;
+    width: 590px;
+    height: auto;
+    padding: 20px 40px;
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+.pageTitle
+{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: xx-large;
+}
+.MyInput{
+    /* background: #f7f9fc !important; */
+    /* border: 0 !important; */
+    /* outline: none !important; */
+    text-indent: 0px !important;
+    /* height: 44px !important; */
+    /* border-bottom: 1px solid #dfe7f1 !important; */
+    width: 100% !important;
+    text-align: left;
+}
+/* .selectField
+{
+    background: #f7f9fc !important;
+    border: 0 !important;
+    outline: none !important;
+    text-indent: 0px !important;
+    height: 44px !important;
+    border-bottom: 1px solid #dfe7f1 !important;
+    width: 100% !important;
+    text-align: left;
+} */
+#confirmButton{
+    margin-top: 15px;
+    border: 0;
+    color: white;
+    background-color:rgb(0, 0, 0, 0.85);;
+    width: 100%;
+    font-weight: 400;
+    line-height: 1.5;
+    border-radius: .28rem;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    padding-top: 7px;
+    padding-bottom: 32px;
+}
+
+@media(max-width: 700px){
+    .mainContainerSignUp{
+        width: 520px;
+    }
+    .MyInput{
+        height:42px;
+    }
+    .forgot{
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 600px){
+    .mainContainerSignUp{
+        width: 450px;
+    }
+    .MyInput{
+        height:40px;
+    }
+    .forgot{
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 480px){
+    .mainContainerSignUp{
+        width: 380px;
+    }
+    .MyInput{
+        height:36px;
+    }
+    .forgot{
+        font-size: 13px;
+    }
+}
+
+@media(max-width: 410px){
+    .mainContainerSignUp{
+        width: 350px;
+    }
+    .forgot{
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 370px){
+    .mainContainerSignUp{
+        width: 320px;
+    }
+    .forgot{
+        font-size: 11px;
+    }
+}
+
+@media(max-width: 350px){
+    .mainContainerSignUp{
+        width: 280px;
+    }
+    .forgot{
+        font-size: 10px;
+    }
+}

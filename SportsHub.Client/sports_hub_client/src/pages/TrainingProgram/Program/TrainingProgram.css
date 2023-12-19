@@ -1,0 +1,37 @@
+.imageAndDescription {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.description {
+    max-width: 600px;
+    overflow: auto;
+    max-height: 560px;
+    margin-bottom: 25px;
+    background-color: snow;
+}
+
+.adminButtons
+{
+    margin: auto;
+}
+
+.followButton {
+    max-width: fit-content;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.rating-style {
+    max-width: fit-content;
+    margin: auto;
+    margin-bottom: 20px;
+}

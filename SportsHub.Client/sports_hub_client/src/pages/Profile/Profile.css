@@ -1,0 +1,5 @@
+.profileHeader {
+    justify-content: center;
+    display: flex !important;
+    /* padding-top: 10px; */
+}

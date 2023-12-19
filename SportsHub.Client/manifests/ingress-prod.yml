@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: sportshubclient
+  name: routing-for-sportshub-client
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    nginx.ingress.kubernetes.io/proxy-body-size: "20m"
+spec:
+  tls:
+  - hosts:
+      - ___SiteDnsName___
+    secretName: tls-secret-prd
+  rules:
+  - host: ___SiteDnsName___
+    http:
+      paths:        
+      - path: /
+        backend:
+          serviceName: sportshubclient
+          servicePort: 80
