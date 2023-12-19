@@ -145,6 +145,32 @@ public async Task<IActionResult> GetAll()
 - News.
 - Recommendations.
 
+# Resiliency model
+- Interaction: User - SPA Application
+
+Interaction Description:
+Represents all user interactions with the Single Page Application (SPA) on the website.
+Includes activities like browsing, submitting forms, etc.
+Resilience Measures:
+Implement client-side error handling to gracefully handle user input errors.
+Use client-side caching for improved performance during intermittent network issues.
+
+- Interaction: C# Application - Database (Primary)
+
+Interaction Description:
+Represents the primary database connection used by the C# application for data storage and retrieval.
+Resilience Measures:
+Implement connection pooling to efficiently manage and reuse database connections.
+Utilize transaction management to ensure data consistency during complex operations.
+
+- Interaction: C# Application - External Services
+
+Interaction Description:
+C# application interacts with external services for additional functionalities.
+Resilience Measures:
+Implement timeout mechanisms for external service calls to prevent blocking the application.
+Use asynchronous programming to maintain responsiveness during external service delays.
+
 # Analytics model
 **Potential functional metrics that can be collected from the application**
 - Articles` views.
@@ -212,28 +238,3 @@ Measure the application's availability by tracking response times. Achieve conti
 Measurement Unit: Percentage (%), Acceptable Range: 0% - 100%, Monitoring Tool: Amazon CloudWatch or System-Level Monitoring Tools, Criticality Level: High
 Monitor the CPU usage to ensure it remains within acceptable limits. High CPU usage can lead to performance degradation or even system instability.
 
-# Resiliency model
-- Interaction: User - SPA Application
-
-Interaction Description:
-Represents all user interactions with the Single Page Application (SPA) on the website.
-Includes activities like browsing, submitting forms, etc.
-Resilience Measures:
-Implement client-side error handling to gracefully handle user input errors.
-Use client-side caching for improved performance during intermittent network issues.
-
-- Interaction: C# Application - Database (Primary)
-
-Interaction Description:
-Represents the primary database connection used by the C# application for data storage and retrieval.
-Resilience Measures:
-Implement connection pooling to efficiently manage and reuse database connections.
-Utilize transaction management to ensure data consistency during complex operations.
-
-- Interaction: C# Application - External Services
-
-Interaction Description:
-C# application interacts with external services for additional functionalities.
-Resilience Measures:
-Implement timeout mechanisms for external service calls to prevent blocking the application.
-Use asynchronous programming to maintain responsiveness during external service delays.
