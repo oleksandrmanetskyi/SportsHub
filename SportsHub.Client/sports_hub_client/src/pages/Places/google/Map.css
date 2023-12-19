@@ -1,0 +1,14 @@
+.map-container {
+    height: 500px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .map-ref {
+    height: 100%;
+  }
+  
+  .btn {
+    font-size: 30px;
+  }

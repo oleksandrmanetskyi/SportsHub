@@ -1,0 +1,30 @@
+.noNews {
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    padding: 130px;
+    /* padding-left: 380px; */
+}
+.NewsSelect {
+    padding-right: 112px;
+    padding-bottom: 5px;
+}
+
+.Pagination{
+    display: flex;
+    /* float: right; */
+    justify-content: end;
+    padding: 0px 80px 10px;
+}
+.new {
+    text-align: center;
+    margin-left: 15px;
+    float: right;
+}
+
+.allNews {
+    margin-top: 30px;
+    margin-left: 85px;
+    margin-right: 85px;
+    display: table;
+}

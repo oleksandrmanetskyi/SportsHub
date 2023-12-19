@@ -1,0 +1,30 @@
+.noPrograms {
+    min-height: 300px;
+    /* display: flex; */
+    justify-content: center;
+    padding: 130px;
+    padding-left: 380px;
+}
+.programSelect {
+    padding-right: 80px;
+    padding-bottom: 5px;
+}
+
+.Pagination{
+    display: flex;
+    /* float: right; */
+    justify-content: end;
+    padding: 0px 80px 10px;
+}
+.new {
+    text-align: center;
+    margin-left: 15px;
+    float: right;
+}
+
+.refresh {
+    text-align: center;
+    margin-left: 15px;
+    float: right;
+    margin-top: 3px;
+}

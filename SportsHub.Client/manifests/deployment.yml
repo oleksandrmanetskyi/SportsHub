@@ -1,0 +1,21 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: sportshubclient
+  labels:
+    app: sportshubclient  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sportshubclient
+  template:
+    metadata:
+      labels:
+        app: sportshubclient 
+    spec:
+      containers:
+        - name: sportshubclient 
+          image: ___containerRegistry___/sportshubclient
+          ports:
+          - containerPort: 80

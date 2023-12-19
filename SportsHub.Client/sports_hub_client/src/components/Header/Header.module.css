@@ -1,0 +1,121 @@
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 80px 0 20px;
+    position: fixed;
+    z-index: 300;
+    width: 100%;
+    user-select: none;
+    background-color: white;
+}
+.headerMenu
+{
+    display: flex !important;
+}
+.LogoName
+{
+    font-size: 30px;
+}
+.MenuItemName
+{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+.headerMenu {
+    color: rgba(255, 255, 255, 0.85);
+    border: none;
+    font-size: 16px;
+    background-color: white;
+    
+}
+.drawerHeaderMenu {
+    border: none;
+    font-size: 16px;
+}
+.drawerAndLogo {
+    float:left; 
+    display:inline;     
+
+}
+.headerMenu2
+{
+    
+}
+.headerDropDownItem {
+    margin: 0px 0;
+    padding-top: 0px;
+}
+.headerLink
+{
+    color: black !important;
+}
+.headerLink:hover
+{
+    color: black !important;
+}
+.headerItem,
+.headerDropDownItem {
+    border: none !important;
+    user-select: none;
+}
+.headerLogo img:first-child {
+    width: 45px;
+    margin-top: -5px;
+}
+
+.headerLogo img:nth-child(2) {
+    width: 60px;
+    margin-left: 15px;
+}
+
+.userMenu {
+    border: none;
+    background: inherit;
+    color: rgb(0, 0, 0);
+    user-select: none;
+    font-size: 14px;
+}
+
+.userMenu:hover {
+     /* color: rgb(21, 25, 27);  */
+}
+
+.dropDownMenu {
+    margin-top: 20px;
+    /* background-color: #f0f2f5; */
+}
+
+.dropDownIcon {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+@media (max-width: 767px) {
+    .headerContainer {
+        padding: 0 15px;
+    }
+    .headerMenu:nth-child(2) {
+        min-width: 0;
+        max-width: 100px;
+    }
+}
+
+.menuText {
+    color: black;
+    font-size: large !important;
+
+}
+.menuTextHomeItem{
+    color: #6b1d93 !important;
+
+}
+.menuTextHomeItem:hover{
+    color: #6b1d93;
+}
+.menuText:hover{
+    color: black;
+
+}
+.accountIconButton {
+    color: #6b1d93;
+}
