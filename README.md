@@ -171,34 +171,44 @@ Additinal services:
 - Google Maps API
 
 # Monitoring
-- HTTP Response Codes - 
+- HTTP Response Codes
+
 Measurement Unit: Count (Number), Acceptable Range: 0, Monitoring Tool: AWS Elastic Beanstalk, Criticality Level: High
 Track the occurrences of different HTTP response codes (e.g., 4xx, 5xx). A sudden increase in error responses may indicate issues with your application or server.
-- Client-Side Errors - 
+- Client-Side Errors
+
 Measurement Unit: Count (Number), Acceptable Range: 0, Monitoring Tool: Real User Monitoring (RUM) tools or custom error tracking solutions (CloudWatch RUM), Criticality Level: High
 Track the number of client-side errors occurring in the application. This includes JavaScript errors that may impact the user experience.
-- User Interactions - 
+- User Interactions
+ 
 Measurement Unit: Count (Number), Acceptable Range: Depends on the nature of the application, Monitoring Tool: Custom event tracking or analytics tools (CloudWatch RUM), Criticality Level: Medium
 Monitor user interactions such as clicks, form submissions, and other meaningful events within your React application.
-- Database Query Performance - 
+- Database Query Performance
+
 Measurement Unit: Milliseconds (ms), Acceptable Range: Varies based on the complexity of queries, Monitoring Tool: SQL Server Profiler or Azure SQL Analytics, Criticality Level: High
 Monitor the performance of SQL queries executed by your application. Identify slow queries and optimize their execution plans.
-- Transaction Response Time - 
+- Transaction Response Time
+ 
 Measurement Unit: Milliseconds (ms), Acceptable Range: Varies based on transaction complexity, Monitoring Tool: SQL Server Profiler or Azure SQL Analytics, Criticality Level: High
 Measure the time it takes to complete database transactions. This includes INSERT, UPDATE, DELETE, and SELECT operations.
-- API Response Time - 
+- API Response Time
+
 Measurement Unit: Milliseconds (ms), Acceptable Range: Varies based on the complexity of operations, Monitoring Tool: Application Performance Monitoring (APM) tools or custom logging, Criticality Level: High
 Measure the time it takes for the API layer to respond to incoming requests. Optimize API endpoints for faster response times.
-- Error Rates in Application Layer - 
+- Error Rates in Application Layer
+
 Measurement Unit: Percentage (%), Acceptable Range: 0% - 5%, Monitoring Tool: APM tools or custom error tracking, Criticality Level: High
 Track the percentage of failed requests or exceptions in the application layer. Identify and address errors promptly.
-- Database Connection Pooling - 
+- Database Connection Pooling
+
 Measurement Unit: Count (Number), Acceptable Range: Varies based on application traffic, Monitoring Tool: SQL Server Management Studio or custom logging, Criticality Level: Medium
 Monitor the number of open and available connections in the database connection pool. Ensure efficient use of connections to prevent connection-related issues.
-- App Availability - 
+- App Availability
+
 Measurement Unit: Milliseconds (ms), Acceptable Range: 0ms (Continuous Availability), Monitoring Tool: Amazon CloudWatch or Custom Uptime Monitoring System, Criticality Level: High
 Measure the application's availability by tracking response times. Achieve continuous availability with minimal downtime.
-- CPU Usage - 
+- CPU Usage
+
 Measurement Unit: Percentage (%), Acceptable Range: 0% - 100%, Monitoring Tool: Amazon CloudWatch or System-Level Monitoring Tools, Criticality Level: High
 Monitor the CPU usage to ensure it remains within acceptable limits. High CPU usage can lead to performance degradation or even system instability.
 
