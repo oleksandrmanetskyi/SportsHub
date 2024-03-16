@@ -268,3 +268,9 @@ Monitor the CPU usage to ensure it remains within acceptable limits. High CPU us
 ### Training program
 ![Training program page(inc My)](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/def01ea0-0d07-410b-8b56-7440d9332aa8)
 
+# Planning
+## Gantt chart
+![Знімок екрана 2024-03-16 235311](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/4201121e-cdf3-4c7d-9f24-83cdc59cd69c)
+
+[Gantt.pdf](https://github.com/oleksandrmanetskyi/SportsHub/files/14625346/Gantt.pdf)
+
