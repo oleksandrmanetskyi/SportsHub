@@ -274,3 +274,5 @@ Monitor the CPU usage to ensure it remains within acceptable limits. High CPU us
 
 [Gantt.pdf](https://github.com/oleksandrmanetskyi/SportsHub/files/14625346/Gantt.pdf)
 
+## Gantt chart with dependencies
+![Знімок екрана 2024-03-16 235631](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/2314865b-0c14-4f0c-bc86-b0c8743d9e97)
