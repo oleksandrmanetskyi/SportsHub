@@ -1,4 +1,4 @@
-![Training programs page](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/f14bddcd-2234-4a48-a1e8-29d2ee300828)# SportsHub
+# SportsHub
 Sports Hub is an application to make more easier to do sport. All you need it is sing up or log in and take pleasure of using it.
 # Requirements
 **UML Diagram**:
