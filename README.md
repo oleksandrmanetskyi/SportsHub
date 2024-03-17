@@ -238,8 +238,52 @@ Measure the application's availability by tracking response times. Achieve conti
 Measurement Unit: Percentage (%), Acceptable Range: 0% - 100%, Monitoring Tool: Amazon CloudWatch or System-Level Monitoring Tools, Criticality Level: High
 Monitor the CPU usage to ensure it remains within acceptable limits. High CPU usage can lead to performance degradation or even system instability.
 
-# Wireframes
-## Pages
+# Team members
+## Product Owner & Technical Lead - Maksym Lanchevych
+Managing the project, fills and prioritize the product backlog, plans new features.
+### Responsibilities
+- Prioritize and maintain the product backlog.
+- Define features, user stories, and acceptance criteria.
+- Plan and prioritize releases.
+- Provide technical leadership and guidance to the team.
+- Conduct code reviews and provide constructive feedback.
+
+## Full-Stack Developer - Oleksandr Manetskyi
+Develop backend and frontend parts.
+### Responsibilities
+- Develop frontend and backend parts
+- Testing and debugging code to identify and fix issues.
+- Design database schemas and optimize queries.
+- Conduct code reviews and provide constructive feedback.
+- Update documentation.
+
+## Quality Assurance Engineer - Volodymyr Derkach
+Ensuring the quality of product.
+### Responsibilities
+- Develop and execute test plans, test cases.
+- Report defects.
+- Verify tasks based on acceptance criteria.
+- Update documentation.
+
+## DevOps Engineer - Andrii Klochovskyi
+Managing deployment, automation processes.
+### Responsibilities
+- Automating and optimizing the deployment, configuration, and management of infrastructure and software systems.
+- Implementing continuous integration and continuous deployment (CI/CD) pipelines.
+- Ensuring security, compliance, and reliability of infrastructure.
+- Update documentation.
+
+# Project plan
+## Gantt chart
+![Знімок екрана 2024-03-16 235311](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/4201121e-cdf3-4c7d-9f24-83cdc59cd69c)
+
+[Gantt.pdf](https://github.com/oleksandrmanetskyi/SportsHub/files/14625346/Gantt.pdf)
+
+## Gantt chart with dependencies
+![Знімок екрана 2024-03-16 235631](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/2314865b-0c14-4f0c-bc86-b0c8743d9e97)
+
+# UI Requirements 
+## Wireframes
 ### Login
 ![Login page](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/76856235-54e1-4337-977c-3df0e3ce36b5)
 
@@ -255,7 +299,6 @@ Monitor the CPU usage to ensure it remains within acceptable limits. High CPU us
 ### Nutritions
 ![Nutritions page](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/624e09e8-6d5a-45bd-916b-7edc978de70d)
 
-
 ### Nutrition
 ![Nutrition page(inc My)](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/0c64b1dc-7256-4b42-8229-357de8e53ea2)
 
@@ -267,12 +310,3 @@ Monitor the CPU usage to ensure it remains within acceptable limits. High CPU us
 
 ### Training program
 ![Training program page(inc My)](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/def01ea0-0d07-410b-8b56-7440d9332aa8)
-
-# Planning
-## Gantt chart
-![Знімок екрана 2024-03-16 235311](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/4201121e-cdf3-4c7d-9f24-83cdc59cd69c)
-
-[Gantt.pdf](https://github.com/oleksandrmanetskyi/SportsHub/files/14625346/Gantt.pdf)
-
-## Gantt chart with dependencies
-![Знімок екрана 2024-03-16 235631](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/2314865b-0c14-4f0c-bc86-b0c8743d9e97)
