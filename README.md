@@ -282,6 +282,48 @@ Managing deployment, automation processes.
 ## Gantt chart with dependencies
 ![Знімок екрана 2024-03-16 235631](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/2314865b-0c14-4f0c-bc86-b0c8743d9e97)
 
+# User stories
+1. As a user, I want to be able to choose the type of sport I'm interested in, so I can view relevant information and updates.
+2. As a user, I want to read news articles about my favorite sports to stay updated on current events.
+3. As a user, I want to be able to comment news articles.
+4. As a user, I want to discover places where I can participate in sports activities, including gyms, fields, courts, etc.
+5. As a user, I want to explore recommended training programs tailored to my chosen sport to improve my skills and fitness level.
+6. As a user, I want to view my profile information, including personal details, preferences, and activity history.
+7. As a user, I want to have an ability to edit profile information.
+8. As a user, I want to set my profile picture, update and delete it.
+9. As a user, I want to confirm my email address by using a code from verification email sended by SportsHub platoform.
+10. As a user, I want to access recommended nutrition plans designed to complement my sports training and performance goals.
+11. As a user, I want to select an active training program from the available options to follow and track my progress.
+12. As a user, I want to browse sport shops to discover and purchase equipment, apparel, and accessories.
+13. As a user, I want the ability to log out of my account.
+14. As a user, I want to filter news articles by date, popularity, or topic to customize my news feed.
+15. As a user, I want to receive personalized recommendations for training programs and nutrition based on my profile data and preferences.
+16. As a user, I want to rate and review sport shops to help other users.
+17. As a user, I want to customize my profile settings, such as notification preferences, privacy settings, and account details.
+18. As a user, I want to access customer support or help resources for assistance with any issues.
+19. As a user, I want to delete my account and wipe all my data.
+20. As a user, I want to link my account with Google Account, Apple ID, Facebook account.
+21. As a user, I want to share my training progress and achievements with my social media networks directly from SportsHub.
+22. As a user, I want to receive personalized coaching tips and feedback based on my performance and training history.
+23. As a user, I want to earn virtual badges, trophies, or rewards for reaching milestones and completing challenges.
+24. As an admin, I want to manage user accounts and permissions.
+25. As an admin, I want to add, edit, or remove sport shops to keep the directory updated and accurate.
+26. As an admin, I want to create, modify, or delete nutrition plans.
+27. As an admin, I want to publish, update, or remove sport news articles.
+28. As an admin, I want to develop and maintain training programs, including adding, editing, or removing programs as needed.
+29. As an admin, I want to analyze user engagement metrics and feedback.
+30. As an admin, I want to schedule and automate content publishing.
+31. As an admin, I want to use analytics tools to track user behavior, trends, and preferences.
+32. As an admin, I want to conduct regular backups and maintenance tasks to prevent data loss.
+33. As an admin, I want to have an ability to block other users account.
+34. As an admin, I want to have an ability to delete other users account.
+35. As a guest, I want to register on the platform using email and password.
+36. As a guest, I want to register on the platoform using Google Account, Apple ID, Facebook account.
+37. As a guest, I want to login to the platform.
+38. As a guest, I want to explore featured content or highlights on the home page.
+39. As a guest, I want to read reviews or ratings from other users.
+40. As a guest, I want to see links to SportsHub social medias.
+
 # UI Requirements 
 ## Wireframes
 ### Login
