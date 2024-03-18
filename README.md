@@ -1,5 +1,8 @@
 # SportsHub
 Sports Hub is an application to make more easier to do sport. All you need it is sing up or log in and take pleasure of using it.
+
+**Project Charter:**
+https://github.com/oleksandrmanetskyi/SportsHub/blob/1c6fa7f763534f8859c8261cd806d89c48375f20/Project%20charter.md
 # Requirements
 **UML Diagram**:
 ![Sports Hub UseCases - 2023](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/26cf3c0e-d1c9-4c51-8b60-06de33557e93)
