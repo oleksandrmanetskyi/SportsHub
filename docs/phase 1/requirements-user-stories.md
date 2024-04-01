@@ -1,3 +1,34 @@
+# Requirements
+**UML Diagram**:
+![Sports Hub UseCases - 2023](https://github.com/oleksandrmanetskyi/SportsHub/assets/47561209/26cf3c0e-d1c9-4c51-8b60-06de33557e93)
+**User**:
+- Choose kind of sport.
+- See news about sport.
+- See places to do sport.
+- See recomended training programs.
+- See profile information.
+- See recomemded nutrition.
+- Choose active training program.
+- See sport shops.
+- Log out.
+
+**Admin**:
+- Extends User functuonality.
+- Add/Edit sport shops.
+- Add/Edit nutritions.
+- Add/Edit sport news.
+- Add/Edit training programs.
+
+**Guest**:
+Can see only the home, login and sign up pages.
+
+## Other Requirements:
+- Web-site shall be easy to use for all users and all ages.
+- Web-site should be responsive and should work correctly on all devices (mobile, tablet, desktop).
+- Web-site should be fast and load pages with minimal delay and use lazy loading where it is possible.
+- App should be secure and use HTTPS protocol.
+- App should be scalable.
+
 # User stories
 1. As a user, I want to be able to choose the type of sport I'm interested in, so I can view relevant information and updates.
 2. As a user, I want to read news articles about my favorite sports to stay updated on current events.
