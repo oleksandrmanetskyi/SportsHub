@@ -5,21 +5,25 @@ using Microsoft.Extensions.Options;
 using SportsHub.Services.DTO;
 using SportsHub.Services.Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SportsHub.Services.Services.Realizations
 {
     public class BlobStorage : IBlobStorage
     {
-        BlobContainerClient container;
+        protected readonly BlobContainerClient container;
         public BlobStorage(IOptions<BlobStorageOptions> options)
         {
             container = new BlobContainerClient(options.Value.ConnectionString, options.Value.ContainerName);
             container.CreateIfNotExists();
         }
+
+        protected BlobStorage(BlobContainerClient container)
+        {
+            this.container = container;
+        }
+
         public async Task UploadBlobAsync(string name, string base64)
         {
             BlobClient blob = container.GetBlobClient(name);
@@ -37,7 +41,7 @@ namespace SportsHub.Services.Services.Realizations
             {
                 return await DownloadAsync(name);
             }
-            catch(RequestFailedException e)
+            catch (RequestFailedException)
             {
                 return await DownloadAsync("default.png");
             }
