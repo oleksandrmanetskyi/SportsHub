@@ -43,7 +43,7 @@ namespace SportsHub.ServicesTests.Services.Realizations
         {
             // Arrange
             var name = "test.jpg";
-            var base64 = "base64-encoded-image-data";
+            var base64 = "base64-encoded-image-data,data";
 
             _mockBlobContainerClient.Setup(x => x.GetBlobClient(name)).Returns(_mockBlobClient.Object);
             _mockBlobClient.Setup(x => x.UploadAsync(It.IsAny<Stream>(), true, default)).Verifiable();
@@ -71,7 +71,7 @@ namespace SportsHub.ServicesTests.Services.Realizations
             var result = await _blobStorage.DownloadBlobAsync(name);
 
             // Assert
-            Assert.AreEqual(base64, result);
+            Assert.That(result, Is.EqualTo(base64));
         }
 
         [Test]
@@ -83,13 +83,16 @@ namespace SportsHub.ServicesTests.Services.Realizations
             var defaultBlobBase64 = Convert.ToBase64String(defaultBlobBytes);
 
             _mockBlobContainerClient.Setup(x => x.GetBlobClient(name)).Returns(_mockBlobClient.Object);
-            _mockBlobClient.Setup(x => x.DownloadAsync()).ThrowsAsync(new RequestFailedException(404, "Blob not found"));
+            _mockBlobContainerClient.Setup(x => x.GetBlobClient("default.png")).Returns(_mockBlobClient.Object);
+            _mockBlobClient.SetupSequence(x => x.DownloadAsync())
+                .ThrowsAsync(new RequestFailedException(404, "Blob not found"))
+                .ReturnsAsync(ReturnBlob(defaultBlobBytes));
 
             // Act
             var result = await _blobStorage.DownloadBlobAsync(name);
 
             // Assert
-            Assert.AreEqual(defaultBlobBase64, result);
+            Assert.That(result, Is.EqualTo(defaultBlobBase64));
         }
 
         [Test]
