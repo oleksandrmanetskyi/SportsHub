@@ -9,7 +9,7 @@ variables:
   ApiName: 'sportshub'
   ClusterResourceGroup: SportsHubResources  
   ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'  
-  ChartPath: 'SportsHub/charts/$(ApiName)'
+  ChartPath: 'SportsHub/SportsHub/charts/$(ApiName)'
   HelmVersion: 3.5.0
   ImageName: 'sportshub1.azurecr.io/sportshub:$(GitVersion.NuGetVersionV2)'
   K8sNamespace: '$(ApiName)-production'
@@ -80,8 +80,6 @@ stages:
                 $(GitVersion.NuGetVersionV2)
                 latest
               addPipelineData: false
-          - publish: chart
-            artifact: chart
   - stage: Deploy
     dependsOn: CI 
     pool: Default
@@ -89,8 +87,6 @@ stages:
       - job: Deploy
         displayName: "⚙️ Deploy to kubernetes"
         steps:
-          - download: current
-            artifact: chart
           - task: HelmInstaller@0
             displayName: 'Install Helm $(HelmVersion)'
             inputs:
@@ -106,7 +102,7 @@ stages:
               azureResourceGroup: $(ClusterResourceGroup)
               kubernetesCluster: $(KubernetesCluster)
               command: 'package'
-              chartPath: chart
+              chartPath: $(ChartPath)
               chartVersion: $(Build.BuildNumber)
               save: false
               namespace: '$(K8sNamespace)'
@@ -123,6 +119,6 @@ stages:
               namespace: '$(K8sNamespace)'
               command: 'upgrade'
               chartType: 'FilePath'
-              chartPath: chart
+              chartPath: '$(ChartPackage)'
               releaseName: '$(ApiName)-$(K8sNamespace)'
               arguments: '--create-namespace'
