@@ -51,12 +51,10 @@ stages:
         displayName: '⚙️ Package and publish'
         dependsOn: [ Compile ]
         steps:
-          - checkout: self 
-            fetchDepth: 0
           - task: gitversion/setup@1.1.1
             displayName: Install GitVersion
             inputs:
-              versionSpec: '5.5.0'
+              versionSpec: '5.x'
           - task: gitversion/execute@1.1.1
             displayName: Determine Version
           - task: Docker@2
