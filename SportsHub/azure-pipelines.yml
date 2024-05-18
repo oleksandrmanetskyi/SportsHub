@@ -21,8 +21,7 @@ stages:
       - job: PrintDetails
         displayName: "\U0001F4C3 PrintDetails"
         steps:
-          - checkout: self 
-            fetchDepth: 0
+          - checkout: none
           - powershell: |
               echo "ID:.....................$(Build.BuildId)"
               echo "Number:.................$(Build.BuildNumber)"
@@ -33,7 +32,7 @@ stages:
             displayName: print job details
       - job: 'Compile'
         displayName: '⚙️ Compile'
-        dependsOn: [ ]
+        dependsOn: [ PrintDetails ]
         steps:      
           - task: NuGetToolInstaller@1
             displayName: 'Install nuget'
