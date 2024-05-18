@@ -51,6 +51,8 @@ stages:
         displayName: '⚙️ Package and publish'
         dependsOn: [ Compile ]
         steps:
+          - checkout: self 
+            fetchDepth: 0
           - task: gitversion/setup@1.1.1
             displayName: Install GitVersion
             inputs:
