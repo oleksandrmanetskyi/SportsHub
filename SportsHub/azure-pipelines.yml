@@ -86,6 +86,13 @@ stages:
       - job: Deploy
         displayName: "⚙️ Deploy to kubernetes"
         steps:
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: $(AzureSubscription)
+              scriptType: 'ps'
+              scriptLocation: 'inlineScript'
+              inlineScript: >
+                az acr login -n SportsHub1
           - task: HelmInstaller@0
             displayName: 'Install Helm $(HelmVersion)'
             inputs:
