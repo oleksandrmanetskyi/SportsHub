@@ -11,7 +11,7 @@ variables:
   ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'  
   ChartPath: 'SportsHub/charts/$(ApiName)'
   HelmVersion: 3.5.0
-  ImageName: 'sportshubcontainerregistry2.azurecr.io/sportshub:$(GitVersion.NuGetVersionV2)'
+  ImageName: 'sportshub1.azurecr.io/sportshub:$(GitVersion.NuGetVersionV2)'
   K8sNamespace: '$(ApiName)-production'
   KubernetesCluster: 'SportsHubCluster2'
 stages:
@@ -51,17 +51,17 @@ stages:
         displayName: '⚙️ Package and publish'
         dependsOn: [ Compile ]
         steps:
-          - task: gitversion/setup@0
+          - task: gitversion/setup@1.1.1
             displayName: Install GitVersion
             inputs:
               versionSpec: '5.5.0'
-          - task: gitversion/execute@0
+          - task: gitversion/execute@1.1.1
             displayName: Determine Version
           - task: Docker@2
             displayName: 'Build image'
             inputs:
               command: 'build'
-              containerRegistry: 'SportsHubContainerRegistry2'
+              containerRegistry: 'SportsHub'
               Dockerfile: 'Dockerfile'
               repository: 'SportsHub'
               buildContext: '$(Build.Repository.LocalPath)'
@@ -74,7 +74,7 @@ stages:
             displayName: 'Push image to container registry'
             inputs:
               command: 'push'
-              containerRegistry: 'SportsHubContainerRegistry2'
+              containerRegistry: 'SportsHub'
               repository: 'SportsHub'
               tags: |
                 $(GitVersion.NuGetVersionV2)
