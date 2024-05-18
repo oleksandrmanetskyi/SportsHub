@@ -11,19 +11,18 @@ variables:
   ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'  
   ChartPath: 'SportsHub/charts/$(ApiName)'
   HelmVersion: 3.5.0
-  ImageName: 'sportshubcontainerregistry2.azurecr.io/sportshubclient:$(GitVersion.NuGetVersionV2)'
+  ImageName: 'sportshub1.azurecr.io.azurecr.io/sportshubclient:$(GitVersion.NuGetVersionV2)'
   K8sNamespace: '$(ApiName)-production'
   KubernetesCluster: 'SportsHubCluster2'
 stages:
   - stage: CI
-    pool:
-      vmImage: ubuntu-latest
+    pool: Default
     jobs:
       - job: PrintDetails
         displayName: "\U0001F4C3 PrintDetails"
         steps:
           - checkout: none
-          - bash: |
+          - powershell: |
               echo "ID:.....................$(Build.BuildId)"
               echo "Number:.................$(Build.BuildNumber)"
               echo "Reason:.................$(Build.Reason)"
@@ -51,11 +50,11 @@ stages:
         displayName: '⚙️ Package and publish'
         dependsOn: [ Compile ]
         steps:
-          - task: gitversion/setup@0
+          - task: gitversion/setup@1.1.1
             displayName: Install GitVersion
             inputs:
-              versionSpec: '5.5.0'
-          - task: gitversion/execute@0
+              versionSpec: '5.x'
+          - task: gitversion/execute@1.1.1
             displayName: Determine Version
           - bash: |
               # Write your commands here
@@ -69,7 +68,7 @@ stages:
             displayName: 'Build image'
             inputs:
               command: 'build'
-              containerRegistry: 'SportsHubContainerRegistry2'
+              containerRegistry: 'SportsHub'
               Dockerfile: 'Dockerfile'
               repository: 'SportsHubClient'
               buildContext: '$(Build.Repository.LocalPath)'
@@ -82,7 +81,7 @@ stages:
             displayName: 'Push image to container registry'
             inputs:
               command: 'push'
-              containerRegistry: 'SportsHubContainerRegistry2'
+              containerRegistry: 'SportsHub'
               repository: 'SportsHubClient'
               tags: |
                 $(GitVersion.NuGetVersionV2)
@@ -90,8 +89,7 @@ stages:
               addPipelineData: false
   - stage: Deploy
     dependsOn: CI 
-    pool:
-      vmImage: ubuntu-latest
+    pool: Default
     jobs:
       - job: Deploy
         displayName: "⚙️ Deploy to kubernetes"
