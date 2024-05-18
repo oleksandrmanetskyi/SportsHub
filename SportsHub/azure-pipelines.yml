@@ -13,7 +13,7 @@ variables:
   HelmVersion: 3.5.0
   ImageName: 'sportshub1.azurecr.io/sportshub:$(GitVersion.NuGetVersionV2)'
   K8sNamespace: '$(ApiName)-production'
-  KubernetesCluster: 'SportsHubCluster2'
+  KubernetesCluster: 'SportsHubCluster'
 stages:
   - stage: CI
     pool:
