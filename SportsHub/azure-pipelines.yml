@@ -62,7 +62,7 @@ stages:
             inputs:
               command: 'build'
               containerRegistry: 'SportsHub'
-              Dockerfile: 'Dockerfile'
+              Dockerfile: 'SportsHub/Dockerfile'
               repository: 'SportsHub'
               buildContext: '$(Build.Repository.LocalPath)/SportsHub'
               arguments: '--build-arg ASPNETCORE_ENVIRONMENT=Production'
