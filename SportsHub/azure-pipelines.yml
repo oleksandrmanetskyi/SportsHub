@@ -16,8 +16,7 @@ variables:
   KubernetesCluster: 'SportsHubCluster'
 stages:
   - stage: CI
-    pool:
-      vmImage: ubuntu-latest
+    pool: Default
     jobs:
       - job: PrintDetails
         displayName: "\U0001F4C3 PrintDetails"
