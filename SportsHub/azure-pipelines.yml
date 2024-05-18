@@ -80,7 +80,7 @@ stages:
                 $(GitVersion.NuGetVersionV2)
                 latest
               addPipelineData: false
-          - publish: $(ChartPath)
+          - publish: chart
             artifact: chart
   - stage: Deploy
     dependsOn: CI 
