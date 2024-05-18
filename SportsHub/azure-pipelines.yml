@@ -114,6 +114,7 @@ stages:
               azureSubscription: $(AzureSubscription)
               azureResourceGroup: '$(ClusterResourceGroup)'
               kubernetesCluster: '$(KubernetesCluster)'
+              azureContainerRegistry: 'SportsHub'
               useClusterAdmin: true
               namespace: '$(K8sNamespace)'
               command: 'upgrade'
