@@ -21,8 +21,9 @@ stages:
       - job: PrintDetails
         displayName: "\U0001F4C3 PrintDetails"
         steps:
-          - checkout: none
-          - bash: |
+          - checkout: self 
+            fetchDepth: 0
+          - powershell: |
               echo "ID:.....................$(Build.BuildId)"
               echo "Number:.................$(Build.BuildNumber)"
               echo "Reason:.................$(Build.Reason)"
@@ -81,8 +82,7 @@ stages:
               addPipelineData: false
   - stage: Deploy
     dependsOn: CI 
-    pool:
-      vmImage: ubuntu-latest
+    pool: Default
     jobs:
       - job: Deploy
         displayName: "⚙️ Deploy to kubernetes"
