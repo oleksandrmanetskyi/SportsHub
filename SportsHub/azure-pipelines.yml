@@ -7,7 +7,7 @@ variables:
   buildConfiguration: 'Release'
   AzureSubscription: 'AzureServiceConnection2' # Name of the Service Connection
   ApiName: 'sportshub'
-  ClusterResourceGroup: SportsHubResources  
+  ClusterResourceGroup: SportsHub  
   ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'  
   ChartPath: 'SportsHub/SportsHub/charts/$(ApiName)'
   HelmVersion: 3.5.0
