@@ -105,7 +105,16 @@ stages:
               chartVersion: $(Build.BuildNumber)
               save: false
               namespace: '$(K8sNamespace)'
-            condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))   
+            condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+
+          - task: AzureCLI@2
+            displayName: 'AKS attach ACR'
+            inputs:
+              azureSubscription: $(AzureSubscription)
+              scriptType: 'ps'
+              scriptLocation: 'inlineScript'
+              inlineScript: >
+                az aks update -n SportsHubCluster -g SportsHub --attach-acr SportsHub1   
           
           - task: HelmDeploy@0
             displayName: 'Helm upgrade release'
