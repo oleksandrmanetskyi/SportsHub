@@ -4,7 +4,7 @@
 fullnameOverride: sportshub
 replicaCount: 1
 image:
-  repository: sportshubcontainerregistry2.azurecr.io/sportshub
+  repository: sportshub1.azurecr.io/sportshub
   tag: latest
   pullPolicy: Always
 imagePullSecrets: []
