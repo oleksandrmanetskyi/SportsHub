@@ -5,7 +5,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  AzureSubscription: 'AzureServiceConnection2' # Name of the Service Connection
+  AzureSubscription: 'AzureServiceConnection3' # Name of the Service Connection
   ApiName: 'sportshub'
   ClusterResourceGroup: SportsHub  
   ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'  
