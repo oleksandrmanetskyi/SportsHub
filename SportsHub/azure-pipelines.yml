@@ -1,6 +1,7 @@
 trigger:
 - main
 - dev
+- test-client
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
@@ -91,7 +92,7 @@ stages:
                 $(GitVersion.NuGetVersionV2)
                 latest
               addPipelineData: false
-          - bash: |
+          - powershell: |
               $content = @"
               const BASE_URL = "https://baseurl/api/";
               export default BASE_URL;
