@@ -31,7 +31,7 @@ stages:
               echo "Definition Name:........$(Build.DefinitionName)"
             displayName: print job details
       - job: 'Compile'
-        displayName: '⚙️ Compile'
+        displayName: '⚙️ Compile and Test'
         dependsOn: [ PrintDetails ]
         steps:      
           - task: NuGetToolInstaller@1
@@ -46,6 +46,18 @@ stages:
               command: build
               projects: '**/*.csproj'
               arguments: '--configuration $(buildConfiguration)'
+          - task: DotNetCoreCLI@2
+            displayName: Test
+            inputs:
+              command: test
+              projects: '**/*tests/**/*.csproj'
+              arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
+              publishTestResults: true
+          - task: PublishCodeCoverageResults@1
+            displayName: 'Publish code coverage report'
+            inputs:
+              codeCoverageTool: 'Cobertura'
+              summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
       - job: PackageAndPublish
         displayName: '⚙️ Package and publish'
         dependsOn: [ Compile ]
