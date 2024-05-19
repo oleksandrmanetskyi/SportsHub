@@ -1,0 +1,167 @@
+trigger:
+- main
+- dev
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  AzureSubscription: 'AzureServiceConnection3' # Name of the Service Connection
+  ApiName: 'sportshub'
+  ClusterResourceGroup: SportsHub  
+  ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'  
+  ChartPath: 'SportsHub/SportsHub/charts/$(ApiName)'
+  HelmVersion: 3.5.0
+  ImageName: 'sportshub1.azurecr.io/sportshub:$(GitVersion.NuGetVersionV2)'
+  K8sNamespace: '$(ApiName)-production'
+  KubernetesCluster: 'SportsHubCluster'
+stages:
+  - stage: CI
+    pool: Default
+    jobs:
+      - job: PrintDetails
+        displayName: "\U0001F4C3 PrintDetails"
+        steps:
+          - checkout: none
+          - powershell: |
+              echo "ID:.....................$(Build.BuildId)"
+              echo "Number:.................$(Build.BuildNumber)"
+              echo "Reason:.................$(Build.Reason)"
+              echo "Source Branch:..........$(Build.SourceBranch)"
+              echo "Source Branch Name:.....$(Build.SourceBranchName)"
+              echo "Definition Name:........$(Build.DefinitionName)"
+            displayName: print job details
+      - job: 'Compile'
+        displayName: '⚙️ Compile and Test'
+        dependsOn: [ PrintDetails ]
+        steps:      
+          - task: NuGetToolInstaller@1
+            displayName: 'Install nuget'
+          - task: NuGetCommand@2
+            displayName: 'Restore nuget packages'
+            inputs:
+              restoreSolution: '$(solution)'
+          - task: DotNetCoreCLI@2
+            displayName: Build
+            inputs:
+              command: build
+              projects: '**/*.csproj'
+              arguments: '--configuration $(buildConfiguration)'
+          - task: DotNetCoreCLI@2
+            displayName: Test
+            inputs:
+              command: test
+              projects: '**/*tests/**/*.csproj'
+              arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
+              publishTestResults: true
+          - task: PublishCodeCoverageResults@1
+            displayName: 'Publish code coverage report'
+            inputs:
+              codeCoverageTool: 'Cobertura'
+              summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
+      - job: PackageAndPublish
+        displayName: '⚙️ Package and publish'
+        dependsOn: [ Compile ]
+        steps:
+          - task: gitversion/setup@1.1.1
+            displayName: Install GitVersion
+            inputs:
+              versionSpec: '5.x'
+          - task: gitversion/execute@1.1.1
+            displayName: Determine Version
+          - task: Docker@2
+            displayName: 'Build image'
+            inputs:
+              command: 'build'
+              containerRegistry: 'SportsHub'
+              Dockerfile: 'SportsHub/Dockerfile'
+              repository: 'SportsHub'
+              buildContext: '$(Build.Repository.LocalPath)/SportsHub'
+              arguments: '--build-arg ASPNETCORE_ENVIRONMENT=Production'
+              tags: |
+                $(GitVersion.NuGetVersionV2)
+                latest
+              addPipelineData: false
+          - task: Docker@2
+            displayName: 'Push image to container registry'
+            inputs:
+              command: 'push'
+              containerRegistry: 'SportsHub'
+              repository: 'SportsHub'
+              tags: |
+                $(GitVersion.NuGetVersionV2)
+                latest
+              addPipelineData: false
+          - powershell: |
+              $content = @"
+              const BASE_URL = "https://baseurl/api/";
+              export default BASE_URL;
+              "@
+              $content | Out-File -FilePath "SportsHub.Client/src/config.ts" -Encoding UTF8
+              Get-Content -Path "SportsHub.Client/src/config.ts"
+            displayName: 'Update API URL'
+          - task: Docker@2
+            displayName: 'Build client image'
+            inputs:
+              command: 'build'
+              containerRegistry: 'SportsHub'
+              Dockerfile: 'SportsHub.Client/Dockerfile'
+              repository: 'SportsHubClient'
+              buildContext: '$(Build.Repository.LocalPath)'
+              arguments: '--build-arg ASPNETCORE_ENVIRONMENT=Production'
+              tags: |
+                $(GitVersion.NuGetVersionV2)
+                latest
+              addPipelineData: false
+          - task: Docker@2
+            displayName: 'Push client image to container registry'
+            inputs:
+              command: 'push'
+              containerRegistry: 'SportsHub'
+              repository: 'SportsHubClient'
+              tags: |
+                $(GitVersion.NuGetVersionV2)
+                latest
+              addPipelineData: false
+  - stage: Deploy
+    dependsOn: CI 
+    pool: Default
+    jobs:
+      - job: Deploy
+        displayName: "⚙️ Deploy to kubernetes"
+        steps:
+          - task: HelmInstaller@0
+            displayName: 'Install Helm $(HelmVersion)'
+            inputs:
+              helmVersion: $(HelmVersion)
+              checkLatestHelmVersion: false
+              installKubectl: true
+            condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))   
+            
+          - task: HelmDeploy@0
+            displayName: 'helm package'
+            inputs:
+              azureSubscriptionEndpoint: $(AzureSubscription)
+              azureResourceGroup: $(ClusterResourceGroup)
+              kubernetesCluster: $(KubernetesCluster)
+              command: 'package'
+              chartPath: $(ChartPath)
+              chartVersion: $(Build.BuildNumber)
+              save: false
+              namespace: '$(K8sNamespace)'
+            condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest')) 
+          
+          - task: HelmDeploy@0
+            displayName: 'Helm upgrade release'
+            inputs:
+              connectionType: 'Azure Resource Manager'
+              azureSubscription: $(AzureSubscription)
+              azureResourceGroup: '$(ClusterResourceGroup)'
+              kubernetesCluster: '$(KubernetesCluster)'
+              azureContainerRegistry: 'SportsHub'
+              useClusterAdmin: true
+              namespace: '$(K8sNamespace)'
+              command: 'upgrade'
+              chartType: 'FilePath'
+              chartPath: '$(ChartPackage)'
+              releaseName: '$(ApiName)-$(K8sNamespace)'
+              arguments: '--create-namespace'
