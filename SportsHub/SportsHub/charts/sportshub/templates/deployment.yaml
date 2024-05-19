@@ -45,17 +45,6 @@ spec:
               path: /
               port: http
           {{- end }}
-          env:
-            {{- $root := . }}
-            {{- range $ref, $values := .Values.secrets }}
-            {{- range $key, $value := $values }}
-            - name: {{ $ref }}_{{ $key }}
-              valueFrom:
-                secretKeyRef:
-                  name: {{ template "sportshub.fullname" $root }}-{{ $ref | lower }}
-                  key: {{ $key }}
-            {{- end }}
-            {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.imagePullSecrets }}
