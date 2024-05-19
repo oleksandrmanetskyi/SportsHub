@@ -28,6 +28,9 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Production
           ports:
             - name: http
               containerPort: {{ .Values.deployment.containerPort }}
