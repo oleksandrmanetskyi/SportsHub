@@ -97,8 +97,8 @@ stages:
               const BASE_URL = "https://baseurl/api/";
               export default BASE_URL;
               "@
-              $content | Out-File -FilePath "SportsHub.Client/src/config.ts" -Encoding UTF8
-              Get-Content -Path "SportsHub.Client/src/config.ts"
+              $content | Out-File -FilePath "SportsHub.Client/sports_hub_client/src/config.ts" -Encoding UTF8
+              Get-Content -Path "SportsHub.Client/sports_hub_client/src/config.ts"
             displayName: 'Update API URL'
           - task: Docker@2
             displayName: 'Build client image'
