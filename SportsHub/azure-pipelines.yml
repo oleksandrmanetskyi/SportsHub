@@ -91,6 +91,37 @@ stages:
                 $(GitVersion.NuGetVersionV2)
                 latest
               addPipelineData: false
+          - bash: |
+              $content = @"
+              const BASE_URL = "https://baseurl/api/";
+              export default BASE_URL;
+              "@
+              $content | Out-File -FilePath "SportsHub.Client/src/config.ts" -Encoding UTF8
+              Get-Content -Path "SportsHub.Client/src/config.ts"
+            displayName: 'Update API URL'
+          - task: Docker@2
+            displayName: 'Build client image'
+            inputs:
+              command: 'build'
+              containerRegistry: 'SportsHub'
+              Dockerfile: 'SportsHub.Client/Dockerfile'
+              repository: 'SportsHubClient'
+              buildContext: '$(Build.Repository.LocalPath)'
+              arguments: '--build-arg ASPNETCORE_ENVIRONMENT=Production'
+              tags: |
+                $(GitVersion.NuGetVersionV2)
+                latest
+              addPipelineData: false
+          - task: Docker@2
+            displayName: 'Push client image to container registry'
+            inputs:
+              command: 'push'
+              containerRegistry: 'SportsHub'
+              repository: 'SportsHubClient'
+              tags: |
+                $(GitVersion.NuGetVersionV2)
+                latest
+              addPipelineData: false
   - stage: Deploy
     dependsOn: CI 
     pool: Default
